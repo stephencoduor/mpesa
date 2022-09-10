@@ -14,7 +14,7 @@ $ composer require stephencoduor/mpesa
   if vendor is root folder if vendor file are on application it should be $config['composer_autoload'] = true ,
   for laravel and other framework they have no problem
      
-     use Wasksofts\Mpesa\Mpesa;
+     use Stephencoduor\Mpesa\Mpesa;
 
     $mpesa  = new Mpesa();
     $mpesa->config('consumer_key', '');
@@ -51,7 +51,7 @@ $ composer require stephencoduor/mpesa
     for call back you can use you own implementation 
     this is for testing.
     
-    use Wasksofts\Mpesa\Callback;
+    use Stephencoduor\Mpesa\Callback;
 
     $callback = new Callback;
     $callback::processSTKPushRequestCallback();
