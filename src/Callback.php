@@ -1,5 +1,5 @@
 <?php
-namespace Wasksofts\Mpesa;
+namespace Stephencoduor\Mpesa;
 
 class Callback
 {

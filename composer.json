@@ -1,5 +1,5 @@
 {
-    "name": "wasksofts/mpesa",
+    "name": "stephencoduor/mpesa",
     "type": "library",
     "description": "Mpesa daraja api library",
     "keywords": [
@@ -12,23 +12,21 @@
         "customer to business",
         "bussines to bussines"
     ],
-    "homepage": "https://github.com/wasksofts/wasksofts/mpesa",
+    "homepage": "https://github.com/stephencoduor/mpesa",
     "license": "MIT",
     "authors": [
         {
-            "name": "steven kamanu",
-            "email": "mukamanusteven@gmail.com",
-            "homepage": "https://wasksofts.com"
+            "name": "Stephen Oduor",
+            "email": "stephencoduor@gmail.com",
+            "homepage": "https://github.com/stephencoduor/mpesa"
         }
     ],
     "autoload": {
         "psr-4": {
-            "Wasksofts\\Mpesa\\": "src"
+            "Stephencoduor\\Mpesa\\": "src"
         }
     },
-    "require": {
-        "php": "^5.6|^7"
-    },
+
     "extra": {
         "branch-alias": {
             "dev-master": "v1.1-dev"

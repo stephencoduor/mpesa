@@ -1,8 +1,8 @@
 <?php
 
-namespace Wasksofts\Mpesa;
+namespace Stephencoduor\Mpesa;
 
-use Wasksofts\Mpesa\Config;
+use Stephencoduor\Mpesa\Config;
 
 date_default_timezone_set("Africa/Nairobi");
 
