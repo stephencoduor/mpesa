@@ -2,8 +2,6 @@
 
 namespace Stephencoduor\Mpesa;
 
-use Stephencoduor\Mpesa\Config;
-
 date_default_timezone_set("Africa/Nairobi");
 
 /**----------------------------------------------------------------------------------------
@@ -20,32 +18,21 @@ date_default_timezone_set("Africa/Nairobi");
 | *---------------------------------------------------------------------------------------
  */
 
-class Mpesa
+class Mpesa extends Config
 {
-  private  $msg = [];
-  private  $SecurityCredential;
-  private  $consumer_key;
-  private  $consumer_secret;
-  private  $shortcode;
-  private  $pass_key;
-  private  $initiator_name;
-  private  $initiator_pass;
-  private  $security_credential;
-  private  $live_endpoint;
-  private  $sandbox_endpoint;
-  private  $confirmation_url;
-  private  $timeout_url;
-  private  $validation_url;
-  private  $callback_url;
-  private  $result_url;
-  private  $env;
 
-  function __construct()
+    public string $security_credential;
+
+    private  $msg = [];
+
+
+
+    public function __construct(array $config)
   {
-    $this->config = Config::getInstance();
-    $this->SecurityCredential = $this->security_credential();
-    $this->live_endpoint      = 'https://api.safaricom.co.ke/';
-    $this->sandbox_endpoint   = 'https://sandbox.safaricom.co.ke/';
+      $this->security_credential   = $this->security_credential();
+      parent::__construct($config);
+
+
   }
 
   /**
@@ -56,59 +43,7 @@ class Mpesa
    * 
    * @return object
    */
-  public function config($key, $value)
-  {
-    switch ($key) {
-      case 'consumer_key':
-        $this->consumer_key = $value;
-        break;
-      case 'consumer_secret':
-        $this->consumer_secret = $value;
-        break;
-      case 'shortcode':
-        $this->shortcode = $value;
-        break;
-      case 'shortcode1':
-        $this->shortcode1 = $value;
-        break;
-      case 'shortcode2':
-        $this->shortcode2 = $value;
-        break;
-      case 'initiator_name':
-        $this->initiator_name = $value;
-        break;
-      case 'initiator_pass':
-        $this->initiator_pass = $value;
-        break;
-      case 'security_credential':
-        $this->security_credential = $value;
-        break;
-      case 'pass_key':
-        $this->pass_key = $value;
-        break;
-      case 'env':
-        $this->env = $value;
-        break;
-      case 'callback_url':
-        $this->callback_url = $value;
-        break;
-      case 'confirmation_url':
-        $this->confirmation_url = $value;
-        break;
-      case 'validation_url':
-        $this->validation_url = $value;
-        break;
-      case 'result_url':
-        $this->result_url = $value;
-        break;
-      case 'timeout_url':
-        $this->timeout_url = $value;
-        break;
-      default:
-        echo 'Invalid config key :' . $key;
-        die;
-    }
-  }
+
 
   /** To authenticate your app and get an Oauth access token
    * An access token expires in 3600 seconds or 1 hour
@@ -116,6 +51,9 @@ class Mpesa
    * @access   private
    * @return   array object
    */
+
+
+
   public function oauth_token()
   {
     $url = $this->env('oauth/v1/generate?grant_type=client_credentials');
