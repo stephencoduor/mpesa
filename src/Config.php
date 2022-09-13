@@ -6,20 +6,20 @@ class Config
 {
 
     //public string $SecurityCredential;
-    public string  $consumer_key;
-    public string  $consumer_secret;
-    public string  $shortcode;
-    public string $pass_key;
-    public string $initiator_name;
-    public string $initiator_pass;
-    public string $security_credential;
-    public string $confirmation_url;
-    public string $timeout_url;
-    public string $validation_url;
-    public string $callback_url;
-    public string $result_url;
-    public string $live_endpoint;
-    public string $sandbox_endpoint;
+    protected string  $consumer_key;
+    protected string  $consumer_secret;
+    protected string  $shortcode;
+    protected string $pass_key;
+    protected string $initiator_name;
+    protected string $initiator_pass;
+    protected string $security_credential;
+    protected string $confirmation_url;
+    protected string $timeout_url;
+    protected string $validation_url;
+    protected string $callback_url;
+    protected string $result_url;
+    protected string $live_endpoint;
+    protected string $sandbox_endpoint;
 
     public bool $env;
 
