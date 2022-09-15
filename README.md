@@ -19,7 +19,7 @@ $ composer require stephencoduor/mpesa
     use Stephencoduor\Mpesa\Mpesa;
 
 
-    $collectAPI = new Mpesa( 
+    $mpesa = new Mpesa( 
     
     [
 
@@ -42,10 +42,7 @@ $ composer require stephencoduor/mpesa
 
 
 
-
-
-
-    # Or Pass an Array of the configuration as below
+---------------Or Pass an Array of the configuration as below -----------------
     
     $config = [
 
