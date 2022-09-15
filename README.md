@@ -66,8 +66,8 @@ $ composer require stephencoduor/mpesa
 
 
 
-        
 
+---------------Now you can call functions on Mpesa as Below ----------------
 
     echo " Token : " . $mpesa->oauth_token();
     $mpesa->STKPushQuery('ws_CO_DMZ_297481201_09042019174418021');
