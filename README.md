@@ -46,19 +46,19 @@ $ composer require stephencoduor/mpesa
     
     $config = [
 
-    "consumer_key"               => "Your Consumer Key",
-    "consumer_secret"            => "Your Consumer Secret",
-    "shortcode"                  => "174379",
-    "shortcode1"                 => "174379",
-    "passkey"                    => "Your Online Passkey",
-    'initiator_name'             => 'Your initiator_name',
-    'initiator_pass'             => 'Your initiator_pass',
-    "callback_url"               => "https://example.com/callback_url/",
-    "confirmation_url"           => "https://example.com/confirmation_url/",
-    "validation_url"             => "https://example.com/validation_url/",
-    "confirmation_url"           => "https://example.com/confirmation_url/",
-    "results_url"                => "https://example.com/timeout_url/",
-    "env"                        => "sandbox",
+            "consumer_key"               => "Your Consumer Key",
+            "consumer_secret"            => "Your Consumer Secret",
+            "shortcode"                  => "174379",
+            "shortcode1"                 => "174379",
+            "passkey"                    => "Your Online Passkey",
+            'initiator_name'             => 'Your initiator_name',
+            'initiator_pass'             => 'Your initiator_pass',
+            "callback_url"               => "https://example.com/callback_url/",
+            "confirmation_url"           => "https://example.com/confirmation_url/",
+            "timeout_url"                => "https://example.com/timeout_url/",
+            "validation_url"             => "https://example.com/validation_url/",
+            "results_url"                => "https://example.com/timeout_url/",
+            "env"                        => "sandbox",
            ]
 
 
