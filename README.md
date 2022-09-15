@@ -32,8 +32,8 @@ $ composer require stephencoduor/mpesa
     'initiator_pass'             => 'Your initiator_pass',
     "callback_url"               => "https://example.com/callback_url/",
     "confirmation_url"           => "https://example.com/confirmation_url/",
+    "timeout_url"                => "https://example.com/timeout_url/",
     "validation_url"             => "https://example.com/validation_url/",
-    "confirmation_url"           => "https://example.com/confirmation_url/",
     "results_url"                => "https://example.com/timeout_url/",
     "env"                        => "sandbox",
     ]

@@ -39,10 +39,12 @@ class Config
         $this->timeout_url           = $config['timeout_url'];
         $this->validation_url        = $config['validation_url'];
         $this->result_url            = $config['result_url'];
+        $this->env                   = $config['env '];
+
         $this->live_endpoint      = 'https://api.safaricom.co.ke/';
         $this->sandbox_endpoint   = 'https://sandbox.safaricom.co.ke/';
 
-        $this->env                   = $config['env '];
+
 
     }
 
