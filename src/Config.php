@@ -26,13 +26,15 @@ class Config
     protected function __construct(array $config) {
 
 
-        $this->consumer_secret       = $config['consumer_secret'];
+
         $this->consumer_key          = $config['consumer_key'];
+        $this->consumer_secret       = $config['consumer_secret'];
         $this->shortcode             = $config['shortcode'];
+        $this->shortcode1             = $config['shortcode1'];
         $this->pass_key              = $config['pass_key'];
-        $this->callback_url          = $config['callback_url'];
         $this->initiator_name        = $config['initiator_name'];
         $this->initiator_pass        = $config['initiator_pass'];
+        $this->callback_url          = $config['callback_url'];
         $this->confirmation_url      = $config['confirmation_url'];
         $this->timeout_url           = $config['timeout_url'];
         $this->validation_url        = $config['validation_url'];

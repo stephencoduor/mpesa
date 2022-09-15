@@ -14,25 +14,64 @@ $ composer require stephencoduor/mpesa
   if vendor is root folder if vendor file are on application it should be $config['composer_autoload'] = true ,
   for laravel and other framework they have no problem
      
-     use Stephencoduor\Mpesa\Mpesa;
+     
 
-    $mpesa  = new Mpesa();
-    $mpesa->config('consumer_key', '');
-    $mpesa->config('consumer_secret', '');
-    $mpesa->config('pass_key', '');
-    $mpesa->config('initiator_name', '');
-    $mpesa->config('initiator_pass', '');
-    $mpesa->config('shortcode', '174379');
-    $mpesa->config('shortcode1', '');
-    $mpesa->config('shortcode2', '');
-    $mpesa->config('security_credential','');
-    $mpesa->config('callback_url', 'https://example.com/callback_url/');
-    $mpesa->config('confirmation_url', 'https://example.com/confirmation_url/');
-    $mpesa->config('validation_url', 'https://example.com/validation_url/');
-    $mpesa->config('result_url', 'https://example.com/result_url/'); 
-    $mpesa->config('timeout_url', 'https://example.com/timeout_url/');
-    $mpesa->config('env', 'sandbox');
+    use Stephencoduor\Mpesa\Mpesa;
+
+
+    $collectAPI = new Mpesa( 
     
+    [
+
+    "consumer_key"               => "Your Consumer Key",
+    "consumer_secret"            => "Your Consumer Secret",
+    "shortcode"                  => "174379",
+    "shortcode1"                 => "174379",
+    "passkey"                    => "Your Online Passkey",
+    'initiator_name'             => 'Your initiator_name',
+    'initiator_pass'             => 'Your initiator_pass',
+    "callback_url"               => "https://example.com/callback_url/",
+    "confirmation_url"           => "https://example.com/confirmation_url/",
+    "validation_url"             => "https://example.com/validation_url/",
+    "confirmation_url"           => "https://example.com/confirmation_url/",
+    "results_url"                => "https://example.com/timeout_url/",
+    "env"                        => "sandbox",
+    ]
+    );
+
+
+
+
+
+
+
+    ## OR
+    
+    $config = [
+
+    "consumer_key"               => "Your Consumer Key",
+    "consumer_secret"            => "Your Consumer Secret",
+    "shortcode"                  => "174379",
+    "shortcode1"                 => "174379",
+    "passkey"                    => "Your Online Passkey",
+    'initiator_name'             => 'Your initiator_name',
+    'initiator_pass'             => 'Your initiator_pass',
+    "callback_url"               => "https://example.com/callback_url/",
+    "confirmation_url"           => "https://example.com/confirmation_url/",
+    "validation_url"             => "https://example.com/validation_url/",
+    "confirmation_url"           => "https://example.com/confirmation_url/",
+    "results_url"                => "https://example.com/timeout_url/",
+    "env"                        => "sandbox",
+           ]
+
+
+    $mpesa  = new Mpesa(array $config);
+
+
+
+        
+
+
     echo " Token : " . $mpesa->oauth_token();
     $mpesa->STKPushQuery('ws_CO_DMZ_297481201_09042019174418021');
     $mpesa->STKPushSimulation('1','254708374149','pay now','test');
