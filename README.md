@@ -45,7 +45,7 @@ $ composer require stephencoduor/mpesa
 
 
 
-    ## OR
+    # Or Pass an Array of the configuration as below
     
     $config = [
 
