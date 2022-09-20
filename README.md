@@ -78,13 +78,13 @@ $ composer require stephencoduor/mpesa
     $mpesac2b->register_url(); 
     $mpesac2b->c2b('1000', '254708374149', 'account');
 
-    $mpesab2c = New B2C($config)
+    $mpesab2c = new B2C($config)
     mpesab2c->b2c('200', 'BusinessPayment', '254708374149', 'payment','b2c_timeout','b2c_result'); // last two parameter define callback https://example.com/result_url.php/b2c_timeout/ or https://example.com/result_url/b2c_result/
     
-    $mpesab2b = New B2B($config)
+    $mpesab2b = new B2B($config)
     $mpesab2b->b2b('10000','BusinessPayBill','60000','4','4','paytest','cool','b2b_timeout','b2b_result');
 
-    $mpesa = New Service($config)
+    $mpesa = new Service($config)
     $mpesa->accountbalance('600443','4','remarks','acc_timeout','acc_result');
     $mpesa->reversal('2','254708374149','1','NCR7S1UXBT','PAY NOW');
     $mpesa->transaction_status('NCR7S1UXBT','254708374149','4','apitest');
