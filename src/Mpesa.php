@@ -132,7 +132,7 @@ class Mpesa extends Config
    * @param  string  $TransactionDesc | A description of the transaction.
    * @return array object
    */
-  public function STKPushSimulation($Amount, $PartyA, $AccountReference, $TransactionDesc)
+  public function stk($Amount, $PartyA, $AccountReference, $TransactionDesc)
   {
     $url =  $this->env('mpesa/stkpush/v1/processrequest');
 
