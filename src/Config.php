@@ -2,6 +2,8 @@
 
 namespace Stephencoduor\Mpesa;
 
+
+
 class Config
 {
 
@@ -70,4 +72,8 @@ class Config
             $this->updated = TRUE;
         }
     }
+
+
+
+
 }
