@@ -27,6 +27,16 @@
         }
     },
 
+    "require": {
+        "php": ">=7.4",
+        "guzzlehttp/guzzle": ">=7.2.0",
+         "ext-curl": "*",
+        "ext-dom": "*",
+        "ext-hash": "*",
+        "ext-xmlwriter": "*"
+    },
+
+
     "extra": {
         "branch-alias": {
             "dev-master": "v1.1-dev"

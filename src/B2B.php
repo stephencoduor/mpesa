@@ -2,7 +2,7 @@
 
 namespace Stephencoduor\Mpesa;
 
-class B2B extends Service
+class B2B extends Mpesa
 {
     public function __construct(array $config)
     {
@@ -13,7 +13,7 @@ class B2B extends Service
     }
 
     /** B2B Payment Request transactions between a business and another business
-     * Api requires a valid and verifiedB2B Service shortcode for the business initiating the transaction
+     * Api requires a valid and verifiedB2B Mpesa shortcode for the business initiating the transaction
      * andthe bothbusiness involved in the transaction
      * Command ID : BussinessPayBill ,MerchantToMerchantTransfer,MerchantTransferFromMerchantToWorking,MerchantServucesMMFAccountTransfer,AgencyFloatAdvance
      *
@@ -26,7 +26,7 @@ class B2B extends Service
      * @param  string   $remarks
      * @return array    object
      */
-    public function b2b($Amount, $commandId, $PartyB, $RecieverIdentifierType, $SenderIdentifierType, $AccountReference, $Remarks, $timeout_url, $result_url)
+    public function b2bSend($Amount, $commandId, $PartyB, $RecieverIdentifierType, $SenderIdentifierType, $AccountReference, $Remarks, $timeout_url, $result_url)
     {
         $url =  $this->env('/mpesa/b2b/v1/paymentrequest');
 

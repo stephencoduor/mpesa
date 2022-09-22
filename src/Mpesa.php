@@ -2,29 +2,41 @@
 
 namespace Stephencoduor\Mpesa;
 
+use Exception;
+use GuzzleHttp\Exception\BadResponseException;
+use Stephencoduor\Mpesa\C2B;
+use Stephencoduor\Mpesa\STK;
+use Stephencoduor\Mpesa\B2C;
+use Stephencoduor\Mpesa\B2B;
+
+
+
 date_default_timezone_set("Africa/Nairobi");
 
 /**----------------------------------------------------------------------------------------
-| Service Api library
+| Mpesa Api library
 |------------------------------------------------------------------------------------------
 | *
 | * @package     service class
 | * @author      stephen Oduor
 | * @email       stephencoduor@gmail.com
-| * @website     htps://wasksofts.com
+| * @website     http://itbrains.info
 | * @version     1.0
 | * @license     MIT License Copyright (c) 2021 IT BRAINS LTD
 | *--------------------------------------------------------------------------------------- 
 | *---------------------------------------------------------------------------------------
  */
 
-class Service extends Config
+class Mpesa extends Config
 {
 
     public string $security_credential;
 
     private  $msg = [];
-
+    /**
+     * @var mixed|string
+     */
+    private string $token;
 
 
     public function __construct(array $config)
@@ -33,10 +45,33 @@ class Service extends Config
       parent::__construct($config);
 
 
+
   }
 
+
+
+    public function stk()
+    {
+        return new STK($this);
+    }
+
+    public function c2b()
+    {
+        return new C2B($this);
+    }
+
+    public function b2c()
+    {
+        return new B2C($this);
+    }
+
+    public function b2b()
+    {
+        return new B2B($this);
+    }
+
   /**
-   * Service configuration function
+   * Mpesa configuration function
    * 
    * @param $key
    * @param $value
@@ -51,28 +86,45 @@ class Service extends Config
    * @access   private
    * @return   array object
    */
-  public function oauth_token()
+  public function oauth_token($token =NULL)
   {
-    $url = $this->env('oauth/v1/generate?grant_type=client_credentials');
+      if (is_null($token)) {
 
-    $curl = curl_init();
-    curl_setopt($curl, CURLOPT_URL, $url);
-    $credentials = base64_encode($this->consumer_key . ':' . $this->consumer_secret);
+          try {
+              $url = $this->env('oauth/v1/generate?grant_type=client_credentials');
+              $curl = curl_init();
+              curl_setopt($curl, CURLOPT_URL, $url);
+              $credentials = base64_encode($this->consumer_key . ':' . $this->consumer_secret);
 
-    //setting a custom header      
-    curl_setopt($curl, CURLOPT_HTTPHEADER, array('Authorization: Basic ' . $credentials)); //setting a custom header
-    curl_setopt($curl, CURLOPT_HEADER, false);
-    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, true);
+              //setting a custom header
+              curl_setopt($curl, CURLOPT_HTTPHEADER, array('Authorization: Basic ' . $credentials)); //setting a custom header
+              curl_setopt($curl, CURLOPT_HEADER, false);
+              curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+              curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, true);
 
-    $curl_response = curl_exec($curl);
-    if ($curl_response == true) {
-      return json_decode($curl_response)->access_token;
-    } else {
-      return curl_error($curl);
-    }
-  }
+              $curl_response = curl_exec($curl);
 
+              if ($curl_response == true) {
+                  //return json_decode($curl_response)->access_token;
+                  $this->token = json_decode($curl_response)->access_token;
+                  //Cache::put('mpesa_token', $curl_response['access_token'], now()->addSeconds(58));
+              } else {
+                  return curl_error($curl);
+              }
+
+          }catch (BadResponseException $e) {
+              throw $e;
+          }catch (Exception $e) {
+              throw $e;
+          }
+      }
+      else {
+            $this->token = $token;
+        }
+
+
+
+}
 
   /** Account Balance API request for account balance of a shortcode
    * 
@@ -101,7 +153,7 @@ class Service extends Config
     $this->query($url, $curl_post_data);
   }
 
-  /** reverses a B2B ,B2C ir C2B Service,transaction
+  /** reverses a B2B ,B2C ir C2B Mpesa,transaction
    *
    * @access  public
    * @param   int      $amount
@@ -181,7 +233,9 @@ class Service extends Config
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, $url);
         //setting custom header
-        curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type:application/json', 'Authorization:Bearer ' . $this->oauth_token()));
+        curl_setopt($curl, CURLOPT_HTTPHEADER,
+            array('Content-Type:application/json',
+            'Authorization:Bearer ' . $this->oauth_token()));
 
         $data_string = json_encode($curl_post_data);
 
@@ -198,13 +252,13 @@ class Service extends Config
         }
     }
 
-
     /** get environment url
      *
      * @access public
      * @param  string $request_url
      * @return string
      */
+     
     public function env($request_url = null)
     {
         if (!is_null($request_url)) {
@@ -241,7 +295,7 @@ class Service extends Config
     }
 
     /**
-     * Service authenticate a transaction by decrypting the security credential
+     * Mpesa authenticate a transaction by decrypting the security credential
      * Security credentials are generated by encrypting the Base64 encoded string of the M-Pesa short code
      * and password, which is encrypted using M-Pesa public key and validates the transaction on M-Pesa Core system.
      *

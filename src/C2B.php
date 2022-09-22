@@ -2,7 +2,7 @@
 
 namespace Stephencoduor\Mpesa;
 
-class C2B extends Service
+class C2B extends Mpesa
 {
 
     public function __construct(array $config)
@@ -17,7 +17,7 @@ class C2B extends Service
     /** C2B enable Paybill and buy goods merchants to integrate to mpesa and receive real time payment notification
      *  C2B register URL API register the 3rd party's confirmation and validation url to mpesa
      *  which then maps these URLs to the 3rd party shortcode whenever mpesa receives atransaction on the shortcode
-     *  Service triggers avalidation request against the validation URL and the 3rd party system responds to mpesa
+     *  Mpesa triggers avalidation request against the validation URL and the 3rd party system responds to mpesa
      *  with a validation response (eithera success or an error code)
      *
      *  @return json
@@ -45,7 +45,7 @@ class C2B extends Service
      * @param  int   $BillRefNumber | Bill Reference Number (Optional).
      * @return array object
      */
-    public function c2b($Amount, $Msisdn, $BillRefNumber = NULL)
+    public function c2bPay($Amount, $Msisdn, $BillRefNumber = NULL)
     {
         $url =  $this->env('mpesa/c2b/v1/simulate');
 

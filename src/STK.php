@@ -2,7 +2,7 @@
 
 namespace Stephencoduor\Mpesa;
 
-class STK extends Service
+class STK extends Mpesa
 {
     public function __construct(array $config)
     {
@@ -23,7 +23,7 @@ class STK extends Service
      * @return array object
      */
 
-    public function stk($Amount, $PartyA, $AccountReference, $TransactionDesc)
+    public function stkPush($Amount, $PartyA, $AccountReference, $TransactionDesc)
     {
         $url =  $this->env('mpesa/stkpush/v1/processrequest');
 
@@ -51,7 +51,7 @@ class STK extends Service
      * @param   string  $checkoutRequestID | Checkout RequestID
      * @return  array object
      */
-    public function StkPushQuery($checkoutRequestID)
+    public function stkPushQuery($checkoutRequestID)
     {
         $url =  $this->env('mpesa/stkpushquery/v1/query');
 

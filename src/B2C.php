@@ -2,7 +2,7 @@
 
 namespace Stephencoduor\Mpesa;
 
-class B2C extends Service
+class B2C extends Mpesa
 {
 
     public function __construct(array $config)
@@ -25,7 +25,7 @@ class B2C extends Service
      * @param   string    $ocassion  | optional
      * @return  array object
      */
-    public function b2c($amount, $commandId, $receiver, $remark, $occassion = null, $timeout_url, $result_url)
+    public function b2cSend($amount, $commandId, $receiver, $remark, $occassion = null, $timeout_url, $result_url)
     {
         $url = $this->env('mpesa/b2c/v1/paymentrequest');
 
