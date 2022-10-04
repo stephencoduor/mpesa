@@ -22,7 +22,7 @@ class C2B extends Mpesa
      *
      *  @return json
      */
-    public function register_url()
+    public function register_url($confirmation_url,$validation_url)
     {
         $url =  $this->env('mpesa/c2b/v1/registerurl');
 
@@ -30,8 +30,8 @@ class C2B extends Mpesa
         $curl_post_data = array(
             'ShortCode' => $this->shortcode1,
             'ResponseType' => 'Completed',
-            'ConfirmationURL' => $this->confirmation_url,
-            'ValidationURL' => $this->validation_url
+            'ConfirmationURL' => $confirmation_url,
+            'ValidationURL' => $validation_url
         );
 
         $this->query($url, $curl_post_data);

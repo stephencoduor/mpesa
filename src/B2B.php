@@ -26,7 +26,8 @@ class B2B extends Mpesa
      * @param  string   $remarks
      * @return array    object
      */
-    public function b2bSend($Amount, $commandId, $PartyB, $RecieverIdentifierType, $SenderIdentifierType, $AccountReference, $Remarks, $timeout_url, $result_url)
+    public function b2bSend($Amount, $commandId, $PartyB, $RecieverIdentifierType, $SenderIdentifierType, $AccountReference, $Remarks, $timeout_url,
+                            $result_url)
     {
         $url =  $this->env('/mpesa/b2b/v1/paymentrequest');
 
@@ -42,8 +43,8 @@ class B2B extends Mpesa
             'PartyB' => $PartyB,
             'AccountReference' => $AccountReference,
             'Remarks' => $Remarks,
-            'QueueTimeOutURL' => $this->timeout_url . $timeout_url,
-            'ResultURL' => $this->result_url . $result_url
+            'QueueTimeOutURL' => $timeout_url,
+            'ResultURL' => $result_url
         );
 
         $this->query($url, $curl_post_data);

@@ -38,8 +38,8 @@ class B2C extends Mpesa
             'PartyA' => $this->shortcode1,
             'PartyB' => $receiver,
             'Remarks' => $remark,
-            'QueueTimeOutURL' => $this->timeout_url . $timeout_url,
-            'ResultURL' => $this->result_url . $result_url,
+            'QueueTimeOutURL' => $timeout_url,
+            'ResultURL' => $result_url,
             'Occasion' => $occassion
         );
 

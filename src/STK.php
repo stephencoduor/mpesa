@@ -23,7 +23,7 @@ class STK extends Mpesa
      * @return array object
      */
 
-    public function stkPush($Amount, $PartyA, $AccountReference, $TransactionDesc)
+    public function stkPush($Amount, $PartyA, $AccountReference, $TransactionDesc,$callback_url)
     {
         $url =  $this->env('mpesa/stkpush/v1/processrequest');
 
@@ -37,7 +37,7 @@ class STK extends Mpesa
             'PartyA' => $PartyA,
             'PartyB' => $this->shortcode,
             'PhoneNumber' => $PartyA,
-            'CallBackURL' => $this->callback_url,
+            'CallBackURL' => $callback_url,
             'AccountReference' => $AccountReference,
             'TransactionDesc' => $TransactionDesc
         );
