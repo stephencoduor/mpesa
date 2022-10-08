@@ -51,8 +51,8 @@ class C2B extends Mpesa
 
         //Fill in the request parameters with valid values
         $curl_post_data = array(
-            'ShortCode'  => $this->shortcode1,
-            'CommandID'  => 'CustomerPayBillOnline',
+            'ShortCode'  => $this->shortcode,
+            'CommandID'  => $this->TransactionType,
             'Amount'     => $Amount,
             'Msisdn'     => $Msisdn,
             'BillRefNumber' => $BillRefNumber  // '00000' //optional
