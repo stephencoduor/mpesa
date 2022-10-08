@@ -16,7 +16,7 @@ class Config
     protected string $initiator_name;
     protected string $initiator_pass;
     protected string $security_credential;
-//    protected string $confirmation_url;
+    protected string $TransactionType;
 //    protected string $timeout_url;
 //    protected string $validation_url;
 //    protected string $callback_url;
@@ -24,7 +24,7 @@ class Config
     protected string $live_endpoint;
     protected string $sandbox_endpoint;
 
-    public bool $env;
+    public bool $environment;
 
     protected function __construct(array $config) {
 
@@ -50,13 +50,15 @@ class Config
         $this->initiator_name      = (isset($config['initiator_name'])) ? $config['initiator_name'] :null;
         $this->initiator_pass      = (isset($config['initiator_pass'])) ? $config['initiator_pass'] :null;
         $this->store      = (isset($config['store'])) ? $config['store'] :null;
+        $this->TransactionType      = (isset($config['TransactionType'])) ? $config['TransactionType'] :null;
+
 //        $this->callback_url      = (isset($config['callback_url'])) ? $config['callback_url'] :null;
 //        $this->confirmation_url      = (isset($config['confirmation_url'])) ? $config['confirmation_url'] :null;
 //        $this->timeout_url      = (isset($config['timeout_url'])) ? $config['timeout_url'] :null;
 //        $this->validation_url      = (isset($config['validation_url'])) ? $config['validation_url'] :null;
 //        $this->result_url      = (isset($config['result_url'])) ? $config['result_url'] :null;
-        $this->env      = (isset($config['env'])) ? $config['env'] :true;
-
+        
+        $this->env      = (isset($config['$environment'])) ? $config['$environment'] :true;
         $this->live_endpoint      = 'https://api.safaricom.co.ke/';
         $this->sandbox_endpoint   = 'https://sandbox.safaricom.co.ke/';
 
