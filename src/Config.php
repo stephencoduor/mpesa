@@ -58,7 +58,7 @@ class Config
 //        $this->validation_url      = (isset($config['validation_url'])) ? $config['validation_url'] :null;
 //        $this->result_url      = (isset($config['result_url'])) ? $config['result_url'] :null;
         
-        $this->env      = (isset($config['$environment'])) ? $config['$environment'] :true;
+        $this->environment      = (isset($config['environment'])) ? $config['$environment'] :true;
         $this->live_endpoint      = 'https://api.safaricom.co.ke/';
         $this->sandbox_endpoint   = 'https://sandbox.safaricom.co.ke/';
 
