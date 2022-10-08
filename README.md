@@ -30,7 +30,8 @@ This package seeks to help php developers implement the various Mpesa APIs witho
     "passkey"                    => "Your Online Passkey",
     'initiator_name'             => 'Your initiator_name',
     'initiator_pass'             => 'Your initiator_pass',
-    "environment"                        => "sandbox",
+    'TransactionType'            => 'TransactionType'
+    "environment"                => "sandbox",
     ]
     );
 
