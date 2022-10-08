@@ -30,11 +30,6 @@ This package seeks to help php developers implement the various Mpesa APIs witho
     "passkey"                    => "Your Online Passkey",
     'initiator_name'             => 'Your initiator_name',
     'initiator_pass'             => 'Your initiator_pass',
-    "callback_url"               => "https://example.com/callback_url/",
-    "confirmation_url"           => "https://example.com/confirmation_url/",
-    "timeout_url"                => "https://example.com/timeout_url/",
-    "validation_url"             => "https://example.com/validation_url/",
-    "results_url"                => "https://example.com/timeout_url/",
     "env"                        => "sandbox",
     ]
     );
@@ -53,11 +48,6 @@ This package seeks to help php developers implement the various Mpesa APIs witho
             "passkey"                    => "Your Online Passkey",
             'initiator_name'             => 'Your initiator_name',
             'initiator_pass'             => 'Your initiator_pass',
-            "callback_url"               => "https://example.com/callback_url/",
-            "confirmation_url"           => "https://example.com/confirmation_url/",
-            "timeout_url"                => "https://example.com/timeout_url/",
-            "validation_url"             => "https://example.com/validation_url/",
-            "results_url"                => "https://example.com/timeout_url/",
             "env"                        => "sandbox",
            ]
 
