@@ -20,10 +20,13 @@ class STK extends Mpesa
      * @param  int     $PartyA | The MSISDN sending the funds.
      * @param  int     $AccountReference  | (order id) Used with M-Pesa PayBills
      * @param  string  $TransactionDesc | A description of the transaction.
+     * @param  url  $TransactionDesc | A description of the transaction.
+     * @param  string  $TransactionType | CustomerPayBillOnline for Paybill or CustomerBuyGoodsOnline for Till Number.
+     
      * @return array object
      */
 
-    public function stkPush($Amount, $PartyA, $AccountReference, $TransactionDesc,$callback_url)
+    public function stkPush($Amount, $PartyA, $AccountReference, $TransactionDesc,$Callback_url)
     {
         $url =  $this->env('mpesa/stkpush/v1/processrequest');
 
@@ -32,7 +35,7 @@ class STK extends Mpesa
             'BusinessShortCode' => $this->shortcode,
             'Password' => $this->password(),
             'Timestamp' => $this->timestamp(),
-            'TransactionType' => 'CustomerPayBillOnline',
+            'TransactionType' => $this->TransactionType,
             'Amount' => $Amount,
             'PartyA' => $PartyA,
             'PartyB' => $this->shortcode,
