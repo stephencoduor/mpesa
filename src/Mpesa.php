@@ -262,9 +262,9 @@ class Mpesa extends Config
     public function env($request_url = null)
     {
         if (!is_null($request_url)) {
-            if ($this->env === "sandbox") {
+            if ($this->environment === "sandbox") {
                 return $this->sandbox_endpoint . $request_url;
-            } elseif ($this->env === "live") {
+            } elseif ($this->environment === "live") {
                 return $this->live_endpoint . $request_url;
             }
         }
