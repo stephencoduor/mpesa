@@ -30,7 +30,7 @@ This package seeks to help php developers implement the various Mpesa APIs witho
     "passkey"                    => "Your Online Passkey",
     'initiator_name'             => 'Your initiator_name',
     'initiator_pass'             => 'Your initiator_pass',
-    "env"                        => "sandbox",
+    "environment"                        => "sandbox",
     ]
     );
 
@@ -46,9 +46,10 @@ This package seeks to help php developers implement the various Mpesa APIs witho
             "shortcode"                  => "174379",
             "strore"                     => "174379",
             "passkey"                    => "Your Online Passkey",
+            'TransactionType'            => "TransactionType",
             'initiator_name'             => 'Your initiator_name',
             'initiator_pass'             => 'Your initiator_pass',
-            "env"                        => "sandbox",
+            "environment"                        => "sandbox",
            ]
 
 
@@ -62,10 +63,10 @@ This package seeks to help php developers implement the various Mpesa APIs witho
     echo " Token : " . $mpesa->oauth_token();
     $mpesa = new Mpesa($config);
     $mpesa->stk()->stkPushQuery('ws_CO_DMZ_297481201_09042019174418021');
-    $mpesa->stk()->stkPush('1','254708374149','pay now','test');
+    $mpesa->stk()->stkPush('1','254708374149','pay now','test',''https://example.com/callback_url/);
 
     
-    $mpesa->c2b()->register_url(); 
+    $mpesa->c2b()->register_url('https://example.com/$confirmation_url/','https://example.com/validation_url/'); 
     $mpesa->c2b()->c2bPay('1000', '254708374149', 'account');
 
     
