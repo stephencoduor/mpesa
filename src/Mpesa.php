@@ -41,7 +41,7 @@ class Mpesa extends Config
 
     public function __construct(array $config)
   {
-      $this->security_credential   = $this->security_credential();
+     // $this->security_credential   = $this->security_credential();
       parent::__construct($config);
 
 
