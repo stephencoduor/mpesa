@@ -8,13 +8,13 @@ class Config
 {
 
     //public string $SecurityCredential;
-    protected string  $consumer_key;
-    protected string  $consumer_secret;
-    protected string  $shortcode;
-    protected string  $store;
-    protected string $pass_key;
-    protected string $TransactionType;
-    protected string $sandbox_endpoint;
+    public string  $consumer_key;
+    public string  $consumer_secret;
+    public string  $shortcode;
+    public string  $store;
+    public string $pass_key;
+    public string $TransactionType;
+    public string $sandbox_endpoint;
     public bool $environment;
 
     protected function __construct(array $config) {
