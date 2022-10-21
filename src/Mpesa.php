@@ -27,7 +27,7 @@ date_default_timezone_set("Africa/Nairobi");
 | *---------------------------------------------------------------------------------------
  */
 
-class Mpesa extends
+class Mpesa
 {
 
     public string $security_credential;
@@ -49,7 +49,7 @@ class Mpesa extends
     protected string $sandbox_endpoint;
     public bool $environment;
 
-    protected function __construct(array $config) {
+    public function __construct(array $config) {
 
 
         if(isset($config['consumer_key'])) {
