@@ -4,10 +4,10 @@ namespace Stephencoduor\Mpesa;
 
 class B2B extends Mpesa
 {
-    public function __construct(array $config)
+    public function __construct()
     {
         $this->security_credential   = $this->security_credential();
-        parent::__construct($config);
+        parent::__construct();
 
 
     }

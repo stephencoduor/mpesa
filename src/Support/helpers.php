@@ -2,7 +2,7 @@
 
 if (! function_exists("mpesa"))
 {
-    function pmpesa() {
+    function mpesa() {
 
         return app()->make('mpesa');
     }

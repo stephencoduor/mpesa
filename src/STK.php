@@ -2,12 +2,14 @@
 
 namespace Stephencoduor\Mpesa;
 
+use http\Url;
+
 class STK extends Mpesa
 {
-    public function __construct(array $config)
+    public function __construct()
     {
-        $this->security_credential   = $this->security_credential();
-        parent::__construct($config);
+//        $this->security_credential   = $this->security_credential();
+        parent::__construct();
 
 
     }
@@ -20,7 +22,7 @@ class STK extends Mpesa
      * @param  int     $PartyA | The MSISDN sending the funds.
      * @param  int     $AccountReference  | (order id) Used with M-Pesa PayBills
      * @param  string  $TransactionDesc | A description of the transaction.
-     * @param  url  $TransactionDesc | A description of the transaction.
+     * @param  Url     $Callback_url  This is where Mpesa send Response for successfull payments.
      * @param  string  $TransactionType | CustomerPayBillOnline for Paybill or CustomerBuyGoodsOnline for Till Number.
      
      * @return array object
@@ -40,7 +42,7 @@ class STK extends Mpesa
             'PartyA' => $PartyA,
             'PartyB' => $this->shortcode,
             'PhoneNumber' => $PartyA,
-            'CallBackURL' => $callback_url,
+            'CallBackURL' => $Callback_url,
             'AccountReference' => $AccountReference,
             'TransactionDesc' => $TransactionDesc
         );

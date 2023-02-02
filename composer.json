@@ -36,6 +36,16 @@
         "ext-xmlwriter": "*"
     },
 
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Stephencoduor\\Mpesa\\MpesaServiceProvider"
+            ],
+            "aliases": {
+                "Mpesa": "Stephencoduor\\Mpesa\\Facades\\Mpesa"
+            }
+        }
+    },
 
     "extra": {
         "branch-alias": {
