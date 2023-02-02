@@ -53,6 +53,6 @@ class MpesaServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return ['laravel-paystack'];
+        return ['Mpesa'];
     }
 }
