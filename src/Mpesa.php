@@ -8,6 +8,7 @@ use Stephencoduor\Mpesa\C2B;
 use Stephencoduor\Mpesa\STK;
 use Stephencoduor\Mpesa\B2C;
 use Stephencoduor\Mpesa\B2B;
+use Illuminate\Support\Facades\Config;
 
 
 
@@ -45,53 +46,39 @@ class Mpesa
     protected string  $shortcode;
     protected string  $store;
     protected string $pass_key;
-    protected string $TransactionType;
+    protected string $transactionType;
     protected string $sandbox_endpoint;
-    public bool $environment;
-
-    public function __construct(array $config) {
+    public string $environment;
 
 
-        if(isset($config['consumer_key'])) {
-            $this->consumer_key  = $config['consumer_key'];
-        } else {
-            throw new Exception('Missing  Parameter consumer_key"', 400);
-        }
-        if(isset($config['consumer_secret'])) {
-            $this->consumer_secret  = $config['consumer_secret'];
-        } else {
-            throw new Exception('Missing parameter "consumer_secret"', 400);
-        }
+    public function __construct() {
+        $this->setConsumerkey();
+        $this->setSecretkey();
+        $this->setShortcode();
+        $this->setPasskey();
+        $this->setStore();
+        $this->setEnvironment();
+        $this->setInitiatorName();
+        $this->setInitiatorPassword();
+        $this->setTransactionType();
 
-        if(isset($config['pass_key'])) {
-            $this->pass_key   = $config['pass_key'];
-        } else {
-            throw new InvalidRequestException('Missing parameter "pass_key"', 400);
-        }
-
-        $this->shortcode      = (isset($config['shortcode'])) ? $config['shortcode'] :null;
-        $this->store      = (isset($config['store'])) ? $config['store'] :null;
-        $this->TransactionType      = (isset($config['TransactionType'])) ? $config['TransactionType'] :null;
-        $this->initiator_name      = (isset($config['initiator_name'])) ? $config['initiator_name'] :null;
-        $this->initiator_pass      = (isset($config['initiator_pass'])) ? $config['initiator_pass'] :null;
-
-//        $this->callback_url      = (isset($config['callback_url'])) ? $config['callback_url'] :null;
-//        $this->confirmation_url      = (isset($config['confirmation_url'])) ? $config['confirmation_url'] :null;
-//        $this->timeout_url      = (isset($config['timeout_url'])) ? $config['timeout_url'] :null;
-//        $this->validation_url      = (isset($config['validation_url'])) ? $config['validation_url'] :null;
-//        $this->result_url      = (isset($config['result_url'])) ? $config['result_url'] :null;
-
-        
-        $this->environment      = (isset($config['environment'])) ? $config['$environment'] :true;
         $this->live_endpoint      = 'https://api.safaricom.co.ke/';
         $this->sandbox_endpoint   = 'https://sandbox.safaricom.co.ke/';
-
-
     }
 
+    public function setConsumerkey(){$this->consumer_key = Config::get('publicKey');}
+    public function setSecretkey(){$this->consumer_secret = Config::get('secretKey');}
+    public function setShortcode(){$this->shortcode = Config::get('shortcode');}
+    public function setPasskey(){$this->pass_key = Config::get('passKey');}
+    public function setStore(){$this->store = Config::get('store');}
+    public function setEnvironment(){$this->environment = Config::get('environment');}
+    public function setInitiatorName(){$this->initiator_name = Config::get('initiatorName');}
+    public function setInitiatorPassword(){$this->initiator_pass = Config::get('initiatorPassword');}
+    public function setTransactionType(){$this->transactionType = Config::get('transactionType');}
 
 
-    public function stk()
+
+    public function Express()
     {
         return new STK($this);
     }
